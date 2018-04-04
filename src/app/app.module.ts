@@ -9,6 +9,9 @@ import { ListComponent } from './book/list/list.component';
 import { DetailComponent } from './book/detail/detail.component';
 import { NewComponent } from './book/new/new.component';
 import { HeaderComponent } from './header/header.component';
+import { AuthentificationService } from './services/authentification.service';
+import { AuthentificationGuardService } from './services/authentification-guard.service';
+import { BookService } from './services/book.service';
 
 
 @NgModule({
@@ -24,7 +27,11 @@ import { HeaderComponent } from './header/header.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    AuthentificationService,
+    AuthentificationGuardService,
+    BookService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
