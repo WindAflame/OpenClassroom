@@ -1,21 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
+import { Route } from './routing/route.models';
+
+import { PostService } from './services/post.services';
+
+import { LayoutComponent } from './layout/layout.component';
+import { HeaderComponent } from './layout/header/header.component';
+
 import { PostComponent } from './post/post.component';
-import { PostItemComponent } from './post-item/post-item.component';
-
+import { PostItemComponent } from './post/item/post-item.component';
+import { PostNewComponent } from './post/new/post-new.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    LayoutComponent,
+    HeaderComponent,
     PostComponent,
-    PostItemComponent
+    PostItemComponent,
+    PostNewComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(Route)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    PostService
+  ],
+  bootstrap: [LayoutComponent]
 })
 export class AppModule { }
