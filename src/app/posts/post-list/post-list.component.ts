@@ -1,16 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Post } from '../models/post.models';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { PostService } from '../services/post.services';
 import { Router } from '@angular/router';
-import { RoutePath } from '../routing/path.models';
+import { Post } from '../shared/post.models';
+import { PostService } from '../shared/post.services';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  selector: 'post-list',
+  templateUrl: './post-list.component.html',
+  styleUrls: ['./post-list.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostListComponent implements OnInit, OnDestroy {
 
   posts: Post[];
   postSubscription: Subscription;
@@ -29,7 +28,7 @@ export class PostComponent implements OnInit {
     this.postService.emitPosts();
   }
 
-  onRemovePost(post: Post) { this.postService.removePost(post); }
+  onRemovePost(index: number) { this.postService.removePost(index); }
 
   ngOnDestroy() { this.postSubscription.unsubscribe(); }
 }

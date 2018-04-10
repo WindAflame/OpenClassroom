@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { PostService } from '../../services/post.services';
 import { Router } from '@angular/router';
-import { RoutePath } from '../../routing/path.models';
-import { Post } from '../../models/post.models';
+import { PostService } from '../shared/post.services';
+import { Post } from '../shared/post.models';
+import { postsListUrl } from '../shared/post.url';
 
 @Component({
-  selector: 'app-post-new',
+  selector: 'post-new',
   templateUrl: './post-new.component.html',
   styleUrls: ['./post-new.component.scss']
 })
@@ -39,7 +39,7 @@ export class PostNewComponent implements OnInit {
       new Date().getTime()
     );
     this.postService.createPost(newPost);
-    this.router.navigate( [RoutePath.POSTS] );
+    this.router.navigate( [postsListUrl] );
   }
 
 }
