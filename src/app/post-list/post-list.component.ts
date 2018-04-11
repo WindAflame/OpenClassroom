@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
 import { Post } from '../shared/post.models';
 import { PostService } from '../shared/post.services';
 
@@ -11,12 +10,11 @@ import { PostService } from '../shared/post.services';
 })
 export class PostListComponent implements OnInit, OnDestroy {
 
-  posts: Post[];
-  postSubscription: Subscription;
+  protected posts: Post[];
+  private postSubscription: Subscription;
 
   constructor(
-    private postService: PostService,
-    private router: Router
+    private postService: PostService
   ) { }
 
   ngOnInit() {

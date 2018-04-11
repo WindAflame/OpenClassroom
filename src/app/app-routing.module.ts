@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { postsRoutes } from './posts/posts.routes';
-import { PostListComponent } from './posts/post-list/post-list.component';
+import { postsListUrl, postsNewUrl } from './shared/post.url';
+import { PostNewComponent } from './post-new/post-new.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 export const appRoutes: Routes = [ 
-    // Post
-    { path: '', children: postsRoutes },
-    // Redirect
-    { path: '**', component: PostListComponent }
+    // Home
+    { path: '', redirectTo: postsListUrl, pathMatch: 'full' },
+    // Post - List
+    { path: postsListUrl, component: PostListComponent },
+    // Post - New
+    { path: postsNewUrl, component: PostNewComponent },
+    // Page Not Found to 'Post - List'
+    { path: '**', redirectTo: postsListUrl, pathMatch: 'full' }
  ]
 
  @NgModule({

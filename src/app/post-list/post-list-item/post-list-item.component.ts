@@ -10,10 +10,10 @@ import { PostService, incrementLoveIts, decrementLoveIts } from '../../shared/po
 export class PostListItemComponent implements OnInit {
 
   @Input() 
-  private post: Post;
+  protected post: Post;
 
   @Input() 
-  private indexPost: number;
+  protected indexPost: number;
 
   constructor(
     private postService: PostService
