@@ -10,7 +10,7 @@ import { PostService } from '../shared/post.services';
 })
 export class PostListComponent implements OnInit, OnDestroy {
 
-  protected posts: Post[];
+  public posts: Post[];
   private postSubscription: Subscription;
 
   constructor(
